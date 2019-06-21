@@ -14,7 +14,7 @@ composer require iflorespaz/oauth2-zoom
 
 ## Usage
 
-Usage is the same as The League's OAuth client, using `\League\OAuth2\Client\Provider\Pinterest` as the provider.
+Usage is the same as The League's OAuth client, using `\League\OAuth2\Client\Provider\Zoom` as the provider.
 
 ### Authorization Code Flow
 
