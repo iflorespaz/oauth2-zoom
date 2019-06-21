@@ -19,9 +19,9 @@ Usage is the same as The League's OAuth client, using `\League\OAuth2\Client\Pro
 ### Authorization Code Flow
 
 ```php
-$provider = new League\OAuth2\Client\Provider\Pinterest([
-    'clientId'          => '{pinterest-client-id}',
-    'clientSecret'      => '{pinterest-client-secret}',
+$provider = new League\OAuth2\Client\Provider\Zoom([
+    'clientId'          => '{zoom-client-id}',
+    'clientSecret'      => '{zoom-client-secret}',
     'redirectUri'       => 'https://example.com/callback-url'
 ]);
 
