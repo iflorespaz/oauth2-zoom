@@ -158,6 +158,11 @@ class Zoom extends AbstractProvider
         return new ZoomResourceOwner($response);
     }
 
+	protected function getDefaultHeaders()
+	{
+	  return [ 'Accept' => 'application/json', 'User-Agent' => 'iflorespaz/oauth2-zoom/1.0.0' ];
+	}
+
     /**
      * Sets host.
      *
