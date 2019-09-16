@@ -55,7 +55,7 @@ class Zoom extends AbstractProvider
      */
     public function getBaseAuthorizationUrl()
     {
-        return 'https://zoom.us/oauth';
+        return 'https://zoom.us/oauth/authorize';
     }
 
     /**
