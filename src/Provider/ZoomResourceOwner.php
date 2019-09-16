@@ -69,6 +69,7 @@ class ZoomResourceOwner implements ResourceOwnerInterface
     {
         return $this->response['first_name'] ?: null;
     }
+
     /**
      * Get resource last name.
      *
@@ -77,6 +78,16 @@ class ZoomResourceOwner implements ResourceOwnerInterface
     public function getLastName()
     {
         return $this->response['last_name'] ?: null;
+    }
+
+    /**
+     * Get resource name.
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();
     }
 
     /**
