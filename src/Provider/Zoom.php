@@ -2,7 +2,7 @@
 
 namespace League\OAuth2\Client\Provider;
 
-use League\OAuth2\Client\Provider\Exception\PinterestIdentityProviderException;
+use League\OAuth2\Client\Provider\Exception\ZoomIdentityProviderException;
 use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 
@@ -130,7 +130,7 @@ class Zoom extends AbstractProvider
     /**
      * Check a provider response for errors.
      *
-     * @throws IdentityProviderException
+     * @throws ZoomIdentityProviderException
      * @param  ResponseInterface $response
      * @param  string $data Parsed response data
      * @return void
@@ -138,7 +138,7 @@ class Zoom extends AbstractProvider
     protected function checkResponse(ResponseInterface $response, $data)
     {
         if ($response->getStatusCode() >= 400) {
-            throw new IdentityProviderException(
+            throw new ZoomIdentityProviderException(
                 $data['message'] ?: $response->getReasonPhrase(),
                 $response->getStatusCode(),
                 $response
