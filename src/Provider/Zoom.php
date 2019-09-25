@@ -139,7 +139,7 @@ class Zoom extends AbstractProvider
     {
         if ($response->getStatusCode() >= 400) {
             throw new ZoomIdentityProviderException(
-                $data['message'] ?: $response->getReasonPhrase(),
+                isset($data['message']) ? $data['message'] : $response->getReasonPhrase(),
                 $response->getStatusCode(),
                 $response
             );
