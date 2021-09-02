@@ -2,7 +2,7 @@
 
 namespace League\OAuth2\Client\Provider;
 
-use League\OAuth2\Client\Provider\Exception\PinterestIdentityProviderException;
+use League\OAuth2\Client\Provider\Exception\ZoomIdentityProviderException;
 use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 
@@ -18,7 +18,7 @@ class Zoom extends AbstractProvider
      *
      * @var array
      */
-    public $defaultScopes = ['basic'];
+    public $defaultScopes = [];
 
     /**
      * Default host
@@ -55,7 +55,7 @@ class Zoom extends AbstractProvider
      */
     public function getBaseAuthorizationUrl()
     {
-        return 'https://zoom.us/oauth';
+        return 'https://zoom.us/oauth/authorize';
     }
 
     /**
@@ -124,13 +124,13 @@ class Zoom extends AbstractProvider
      */
     protected function getDefaultScopes()
     {
-        return ['read'];
+        return [];
     }
     
     /**
      * Check a provider response for errors.
      *
-     * @throws IdentityProviderException
+     * @throws ZoomIdentityProviderException
      * @param  ResponseInterface $response
      * @param  string $data Parsed response data
      * @return void
@@ -138,8 +138,8 @@ class Zoom extends AbstractProvider
     protected function checkResponse(ResponseInterface $response, $data)
     {
         if ($response->getStatusCode() >= 400) {
-            throw new IdentityProviderException(
-                $data['message'] ?: $response->getReasonPhrase(),
+            throw new ZoomIdentityProviderException(
+                isset($data['message']) ? $data['message'] : $response->getReasonPhrase(),
                 $response->getStatusCode(),
                 $response
             );
@@ -158,10 +158,10 @@ class Zoom extends AbstractProvider
         return new ZoomResourceOwner($response);
     }
 
-	protected function getDefaultHeaders()
-	{
-	  return [ 'Accept' => 'application/json', 'User-Agent' => 'iflorespaz/oauth2-zoom/1.0.0' ];
-	}
+    protected function getDefaultHeaders()
+    {
+        return [ 'Accept' => 'application/json', 'User-Agent' => 'iflorespaz/oauth2-zoom/1.0.0' ];
+    }
 
     /**
      * Sets host.
