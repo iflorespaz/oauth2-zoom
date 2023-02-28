@@ -96,20 +96,7 @@ class Zoom extends AbstractProvider
      */
     public function getAuthenticatedRequest($method, $url, $token, array $options = [])
     {
-        $parsedUrl = parse_url($url);
-        $queryString = array();
-
-        if (isset($parsedUrl['query'])) {
-            parse_str($parsedUrl['query'], $queryString);
-        }
-
-        if (!isset($queryString['access_token'])) {
-            $queryString['access_token'] = (string) $token;
-        }
-
-        $url = http_build_url($url, [
-            'query' => http_build_query($queryString),
-        ]);
+        $options['headers']['Authorization'] = 'Bearer ' . $token;
 
         return $this->createRequest($method, $url, null, $options);
     }
