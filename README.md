@@ -68,21 +68,18 @@ if (!isset($_GET['code'])) {
 
 ### Managing Scopes
 
-When creating your Pinterest authorization URL, you can specify the state and scopes your application may authorize.
+When creating your Zoom authorization URL, you can specify the state and scopes your application may authorize.
 
 ```php
 $options = [
-    'state' => 'OPTIONAL_CUSTOM_CONFIGURED_STATE',
-    'scope' => ['read', 'write'] // array or string
+    'scope' => ['user:read'] // array or string
 ];
 
 $authorizationUrl = $provider->getAuthorizationUrl($options);
 ```
 If neither are defined, the provider will utilize internal defaults.
 
-At the time of authoring this documentation, the [following scopes are available](https://zoom.us/).
-
-- user:read
+At the time of authoring this documentation, the [following scopes are available](https://marketplace.zoom.us/docs/guides/authorization/permissions).
 
 ## Testing
 

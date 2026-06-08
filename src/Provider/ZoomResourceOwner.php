@@ -26,7 +26,7 @@ class ZoomResourceOwner implements ResourceOwnerInterface
      */
     public function getId()
     {
-        return $this->response['data']['account_id'] ?: null;
+        return $this->response['id'] ?: null;
     }
 
     /**
@@ -36,10 +36,10 @@ class ZoomResourceOwner implements ResourceOwnerInterface
      */
     public function getImageurl()
     {
-        if (empty($this->response['data']['pic_url'])) {
+        if (empty($this->response['pic_url'])) {
             return null;
         }
-        return $this->response['data']['pic_url'];
+        return $this->response['pic_url'];
     }
     /**
      * Alias for getImageurl() for higher compatablility.
@@ -67,8 +67,9 @@ class ZoomResourceOwner implements ResourceOwnerInterface
      */
     public function getFirstName()
     {
-        return $this->response['data']['first_name'] ?: null;
+        return $this->response['first_name'] ?: null;
     }
+
     /**
      * Get resource last name.
      *
@@ -76,26 +77,47 @@ class ZoomResourceOwner implements ResourceOwnerInterface
      */
     public function getLastName()
     {
-        return $this->response['data']['last_name'] ?: null;
+        return $this->response['last_name'] ?: null;
     }
 
     /**
-     * Get user nickname
+     * Get resource name.
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();
+    }
+
+    /**
+     * Alias for getEmail() for higher compatablility.
      *
      * @return string|null
      */
     public function getNickname()
     {
-        return $this->response['data']['account_id'] ?: null;
+        return $this->getEmail();
     }
+
     /**
-     * Alias for getNickname() for higher compatablility.
+     * Alias for getEmail() for higher compatablility.
      *
      * @return string|null
      */
     public function getUsername()
     {
-        return $this->getNickname();
+        return $this->getEmail();
+    }
+
+    /**
+     * Alias for getNickname() for higher compatablility.
+     *
+     * @return string|null
+     */
+    public function getEmail()
+    {
+        return $this->response['email'] ?: null;
     }
 
     /**
@@ -105,7 +127,7 @@ class ZoomResourceOwner implements ResourceOwnerInterface
      */
     public function getUrl()
     {
-        return $this->response['data']['url'] ?: null;
+        return $this->response['personal_meeting_url'] ?: null;
     }
 
     /**
@@ -115,6 +137,6 @@ class ZoomResourceOwner implements ResourceOwnerInterface
      */
     public function toArray()
     {
-        return $this->response['data'];
+        return $this->response;
     }
 }
